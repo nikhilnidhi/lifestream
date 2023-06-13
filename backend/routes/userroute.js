@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express()
-const Misc = require('../controllers/misc')
+const Misc = require('../controller/misc')
 const UserModel = require('../models/usermodel')
 var bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
@@ -8,7 +8,7 @@ const tokenModel = require('../models/tokenmodel')
 var defaults = require('../defaults')
 
 const { UserAgent } = require('express-useragent');
-const adminauth = require('../middilewares/securityauth');
+const adminauth = require('../middleware/securityauth');
 
 
  

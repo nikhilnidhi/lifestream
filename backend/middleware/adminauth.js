@@ -3,7 +3,7 @@ const UserModel = require('../models/usermodel');
 
 var jwt = require('jsonwebtoken');
 
-const Mics = require('../controllers/misc')
+const Mics = require('../controller/misc')
 
 const defaults = require('../defaults');
 

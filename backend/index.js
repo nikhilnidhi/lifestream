@@ -18,7 +18,7 @@ let app = express();
 //File decraltions
 
 
-// const userroute = require('./routes/userroute');
+const userroute = require('./routes/userroute');
 // const visitorroute = require('./routes/visitorroute');
 // const qrcoderoute = require('./routes/qrcoderoute')
 
@@ -69,7 +69,7 @@ app.use((req, res, next) => {
 
 
 // app.use
-// app.use(userroute)
+app.use(userroute)
 // app.use(visitorroute)
 // app.use(qrcoderoute)
 
