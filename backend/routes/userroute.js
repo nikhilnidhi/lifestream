@@ -17,8 +17,22 @@ const adminauth = require('../middleware/securityauth');
 
 router.post('/donarregistration', async (req, res) => {
   try {
-    var {donarname, donarnumber,accessnumber, key } = req.body
+    var {donarname, donarnumber,gmail, key,bloodgroup,location } = req.body
     if (Misc.isnullorempty(donarname)) {
+      res.status(200).json({
+        status: false,
+        msg: "guard name not found"
+      });
+      return;
+    }
+    if (Misc.isnullorempty(bloodgroup)) {
+      res.status(200).json({
+        status: false,
+        msg: "guard name not found"
+      });
+      return;
+    }
+    if (Misc.isnullorempty(location)) {
       res.status(200).json({
         status: false,
         msg: "guard name not found"
@@ -32,7 +46,7 @@ router.post('/donarregistration', async (req, res) => {
       });
       return;
     }
-    if (Misc.isnullorempty(accessnumber)) {
+    if (Misc.isnullorempty(gmail)) {
       
       res.status(200).json({
         status: false,
@@ -47,11 +61,11 @@ router.post('/donarregistration', async (req, res) => {
       });
       return;
     }
-    var alreadyExists = await UserModel.find({ accessno: accessnumber, status: "Active" })
+    var alreadyExists = await UserModel.find({ gmail: gmail, status: "Active" })
     if (!Misc.isnullorempty(alreadyExists)) {
       res.status(200).json({
         status: false,
-        msg: "Access Number Already Registered"
+        msg: "Gmail Already Registered"
       });
       return;
     } 
@@ -60,9 +74,9 @@ router.post('/donarregistration', async (req, res) => {
     var user = new UserModel()
     user.donarname = donarname;
     user.gateno = donarnumber;
-    user.accessno = accessnumber;
+    user.gmail = gmail;
     user.key = hash;
-    user.role ="Security"
+    user.role ="Donar"
     await user.save()
     res.status(200).json({
       status: true,
@@ -84,11 +98,11 @@ router.post('/donarregistration', async (req, res) => {
 
 router.post('/Login',async (req, res) => {
     try {
-      var { accessnumber, key, } = req.body;
-      if (Misc.isnullorempty(accessnumber)) {
+      var { gmail, key, } = req.body;
+      if (Misc.isnullorempty(gmail)) {
         res.status(200).json({
           status: false,
-          msg: "accessno not found"
+          msg: "gmail not found"
         });
         return;
       }
@@ -99,7 +113,7 @@ router.post('/Login',async (req, res) => {
         });
         return;
       }
-      var alreadyExists = await UserModel.findOne({ accessno: accessnumber, status: "Active" })
+      var alreadyExists = await UserModel.findOne({ gmail: gmail, status: "Active" })
       if (Misc.isnullorempty(alreadyExists)) {
         res.status(200).json({
           status: false,

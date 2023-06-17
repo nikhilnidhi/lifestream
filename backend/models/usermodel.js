@@ -3,11 +3,11 @@ var userModelSchema = mongoose.Schema({
     donarname:{
         type:String
     },
-    number:{
+    donarnumber:{
         type:String
     }, 
-    accessno:{
-        type:Number
+    gmail:{
+        type:String
     },
     key:{
         type:String
