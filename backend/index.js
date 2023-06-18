@@ -19,8 +19,6 @@ let app = express();
 
 
 const userroute = require('./routes/userroute');
-// const visitorroute = require('./routes/visitorroute');
-// const qrcoderoute = require('./routes/qrcoderoute')
 
 
 app.use(bodyParser.urlencoded({
@@ -35,7 +33,7 @@ app.use(bodyParser.json({ limit: '150mb' }));
 //Database MongoDB
 
 mongoose.set('strictQuery', true);
-mongoose.connect('mongodb+srv://bd:12345@cluster0.ceg79iu.mongodb.net/', { useNewUrlParser: true,/* useCreateIndex: true,*/ useUnifiedTopology: true}).then(()=>{
+mongoose.connect('mongodb+srv://lifestream:halo12345@cluster0.hvhrsrk.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true,/* useCreateIndex: true,*/ useUnifiedTopology: true}).then(()=>{
   console.log("DB Connected")
 }).catch((ex) => { 
   console.log(ex)
@@ -70,11 +68,9 @@ app.use((req, res, next) => {
 
 // app.use
 app.use(userroute)
-// app.use(visitorroute)
-// app.use(qrcoderoute)
 
 
 
-const server = app.listen(8088, function () {
-  console.log("Running Server on port  8088");
+const server = app.listen(9090, function () {
+  console.log("Running Server on port  9090");
 })

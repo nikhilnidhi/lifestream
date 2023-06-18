@@ -6,7 +6,6 @@ var bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 const tokenModel = require('../models/tokenmodel')
 var defaults = require('../defaults')
-
 const { UserAgent } = require('express-useragent');
 const adminauth = require('../middleware/securityauth');
 
@@ -21,21 +20,21 @@ router.post('/donarregistration', async (req, res) => {
     if (Misc.isnullorempty(donarname)) {
       res.status(200).json({
         status: false,
-        msg: "guard name not found"
+        msg: "donar name not found"
       });
       return;
     }
     if (Misc.isnullorempty(bloodgroup)) {
       res.status(200).json({
         status: false,
-        msg: "guard name not found"
+        msg: "bloodgroup not found"
       });
       return;
     }
     if (Misc.isnullorempty(location)) {
       res.status(200).json({
         status: false,
-        msg: "guard name not found"
+        msg: "location not found"
       });
       return;
     }
@@ -50,7 +49,7 @@ router.post('/donarregistration', async (req, res) => {
       
       res.status(200).json({
         status: false,
-        msg: "access number not found"
+        msg: "gmail not found"
       });
       return;
     }
