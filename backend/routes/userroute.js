@@ -89,6 +89,34 @@ router.post('/donarregistration', async (req, res) => {
 })
 
 
+// Ecotourism View
+
+
+router.get('/user/View',adminauth,async(req,res) =>{
+  try{
+    var user = await UserModel.findOne({ status:"Active" })
+      if (Misc.isnullorempty(user)) {
+        res.status(200).json({
+          status: false,
+          msg: "Details Not Found"
+        });
+        return;
+      }
+      
+      res.status(200).json({
+          status: true,
+          msg: "Details",
+          data: user
+        });
+        return;
+      
+    } catch (error) {
+      console.log(error)
+    }
+  
+  }
+)
+
 
 
 

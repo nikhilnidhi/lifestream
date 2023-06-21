@@ -19,7 +19,7 @@ let app = express();
 
 
 const userroute = require('./routes/userroute');
-
+const Documentroute = require('./routes/Documentroute')
 
 app.use(bodyParser.urlencoded({
   extended: true, limit: '150mb'
@@ -63,11 +63,9 @@ app.use((req, res, next) => {
 })
 
 
-// App Use
-
-
 // app.use
 app.use(userroute)
+app.use(Documentroute)
 
 
 

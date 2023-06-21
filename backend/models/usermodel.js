@@ -12,6 +12,12 @@ var userModelSchema = mongoose.Schema({
     key:{
         type:String
     },
+    bloodgroup:{
+        type:String
+    },
+    location:{
+        type:String
+    },
     role:{
         type:String,
         default:"User"
